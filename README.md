@@ -6,7 +6,6 @@
 3. [Network Layer](#section-2)
 4. [Bussiness Logic and ViewModel](#section-3)
 5. [Dependencies and testablity](#section-4)
-6. [Views](#section-5)
    
 ## Introduction <a name="introduction"></a>
 This app was built with some princples in mind to be flexible, easy to change and testable. In the up coming sections I will explain how I did so, 
@@ -72,9 +71,9 @@ extension EndPoint: EndPointProtocol {
 
 ```
 
-## Bussiness Logic and ViewModel <a name="section-3"></a>
+## Bussiness Logic <a name="section-3"></a>
 Now we have two choose either we make the viewModel communicate directly with NetworkLayer or we can sperate them from each other by creating a middle ground that contains all the 
 logic, the best practice is the second choose this is excatly what we did. We created `ImageGridLogic` to contain all the logic for fetching the images, it depend on `NetworkManger` it's instance is injected by our Dependency container (I will explain it in the next section), it also contains a property called `pageNumber` this is related to the pagnation logic for the images, to be able to fetch diffrent images everytime we need to give the api a diffrent number everytime this is handled by the `pageNumber`. `getImages` is used to get the image and return `[ImageDataDisplay]`.
 
-
-// viewModle and it's property and it testbel and doesn't depend on any implemntation.
+## Dependencies and testablity <a name="section-4"></a>
+For the Dependencies mangment I used another package I built called [GenericNetworkLayer](https://github.com/EngOmarElsayed/Injection.git) it is one of the packages I love becasue it uses macros one of the best features of swift 5.10, it can easily make you mock the objects you depend on which makes all our class testable even the viewModel 😉
