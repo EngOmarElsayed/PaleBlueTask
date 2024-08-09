@@ -22,3 +22,8 @@ Then I created a `ImageDataDisplay` that represnt the data type that the view di
 because of two things, first we needed to add a property called `id` but of type `UUID` and to be unique for every image this is needed for the `ForEach` in the view. Because after 
 testing I found that some images may contain the same `ImageDataFromApi.id` which is a type of `Int`. Second reason it's a good practice to sperate the type you used for decoding 
 api response and the one used for views this to keep our code sperated from each other. Those are all the models we needed to build the app.
+
+## Network Layer <a name="section-2"></a>
+While building the network layer I had one goal in mind to make it genric and doesn't depend on anything. So I used one of the packages I built called [GenericNetworkLayer](https://github.com/EngOmarElsayed/GenericNetworkLayer) rather than building it all again 😅. To ensure that we don't depend on the package and to easily be able to change it 
+with anything else I built a layer on top of it called `NetworkManger` that conforms to `NetworkMangerProtocol`. it only contains one funcation called `getImages` that returns an array
+of `ImageDataFromApi`, at this point we can easily replace the implemntation I used with any other implemntation easily.
