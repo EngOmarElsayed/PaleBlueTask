@@ -10,7 +10,7 @@ import Injection
 import GenericNetworkLayer
 
 @InjecteValues extension InjectedValues {
-  var httpClient: GenericNetworkLayer = GenericNetworkLayer()
+  var httpClient: GenericNetworkLayerProtocol = GenericNetworkLayer()
   var networkManger: NetworkMangerProtocol = NetworkManger()
   var imageGridLogic: ImageGridLogicProtocol = ImageGridLogic()
 }

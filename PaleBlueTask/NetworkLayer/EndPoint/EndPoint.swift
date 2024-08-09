@@ -8,7 +8,7 @@
 import Foundation
 import GenericNetworkLayer
 
-private let apiKey = "22577733-edb14e0d0f3f9c1a039c57e48"
+private let apiKey = "Key"
 
 enum EndPoint {
   case getImages(page: Int)

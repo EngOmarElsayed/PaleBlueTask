@@ -4,10 +4,10 @@
     {
       "identity" : "genericnetworklayer",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/EngOmarElsayed/GenericNetworkLayer.git",
+      "location" : "https://github.com/EngOmarElsayed/GenericNetworkLayer",
       "state" : {
-        "revision" : "d360a9d2a2d3cefe2c501fd150c72746bf0d7357",
-        "version" : "1.1.0"
+        "revision" : "d8df229a82488ec7d1cea1589e2e7343a9011c65",
+        "version" : "1.2.1"
       }
     },
     {
