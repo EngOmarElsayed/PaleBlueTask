@@ -26,4 +26,52 @@ api response and the one used for views this to keep our code sperated from each
 ## Network Layer <a name="section-2"></a>
 While building the network layer I had one goal in mind to make it genric and doesn't depend on anything. So I used one of the packages I built called [GenericNetworkLayer](https://github.com/EngOmarElsayed/GenericNetworkLayer) rather than building it all again 😅. To ensure that we don't depend on the package and to easily be able to change it 
 with anything else I built a layer on top of it called `NetworkManger` that conforms to `NetworkMangerProtocol`. it only contains one funcation called `getImages` that returns an array
-of `ImageDataFromApi`, at this point we can easily replace the implemntation I used with any other implemntation easily.
+of `ImageDataFromApi`, at this point we can easily replace the implemntation I used with any other implemntation easily. `getImages` takes `EndPointProtocol` type that contains all the compounts of a url and create the url from them, 1This let's us avoid hard coded strings.
+
+```swift
+private let apiKey = "Key"
+
+enum EndPoint {
+  case getImages(page: Int)
+}
+
+extension EndPoint: EndPointProtocol {
+  var scheme: APISchemeType {
+    return .https
+  }
+  
+  var host: String? {
+    switch self {
+    case .getImages:
+      return "pixabay.com"
+    }
+  }
+  
+  var path: String {
+    switch self {
+    case .getImages:
+      return "/api/"
+    }
+  }
+  
+  var queryItems: [URLQueryItem]? {
+    switch self {
+    case let .getImages(page):
+      return [URLQueryItem(name: "key", value: "\(apiKey)"),
+              URLQueryItem(name: "q", value: "ball"),
+              URLQueryItem(name: "image_type", value: "photo"),
+              URLQueryItem(name: "page", value: "\(page)"),
+              URLQueryItem(name: "per_page", value: "16")]
+    }
+  }
+  
+  var urlRequest: URLRequest? {
+    return nil
+  }
+}
+
+```
+
+## Bussiness Logic and ViewModel <a name="section-3"></a>
+// page number and dependencie it take
+// viewModle and it's property and it testbel and doesn't depend on any implemntation.
